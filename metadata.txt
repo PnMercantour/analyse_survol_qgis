@@ -1,0 +1,30 @@
+[general]
+name=Altitude Relative
+qgisMinimumVersion=3.0
+description=Calcule l'altitude relative d'une couche polyligne par rapport à un MNT
+version=1.0
+author=Votre Nom
+email=votre.email@example.com
+
+about=Ce plugin calcule l'altitude relative (hauteur par rapport au sol) 
+      d'une couche polyligne en utilisant un Modèle Numérique de Terrain (MNT).
+      Il échantillonne le MNT le long de chaque polyligne et calcule la différence
+      entre l'altitude absolue de la polyligne et l'altitude du terrain.
+
+tracker=https://github.com/votreusername/altitude-relative-plugin/issues
+repository=https://github.com/votreusername/altitude-relative-plugin
+homepage=https://github.com/votreusername/altitude-relative-plugin
+
+# Tags séparées par des virgules, espaces autorisés à l'intérieur des tags
+tags=altitude,MNT,terrain,polyligne,relatif
+
+# Chemin vers l'icône dans le dossier du plugin
+icon=icon.png
+
+experimental=False
+
+# Obsolète. Utiliser le dépôt officiel de QGIS.
+deprecated=False
+
+# Depuis QGIS 3.8, une brève description peut être fournie dans le fichier metadata
+hasProcessingProvider=no
