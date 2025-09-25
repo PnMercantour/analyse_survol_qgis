@@ -3,11 +3,8 @@
 Calcul d'altitude relative pour les polylignes
 """
 
-from qgis.core import (QgsProject, QgsVectorLayer, QgsRasterLayer, QgsFeature,
-                      QgsGeometry, QgsPointXY, QgsField, QgsFields,
-                      QgsVectorDataProvider, QgsWkbTypes, QgsRasterDataProvider,
-                      QgsProcessingException, QgsMessageLog, Qgis, QgsPoint,
-                      QgsCoordinateReferenceSystem, QgsCoordinateTransform)
+from qgis.core import (QgsProject, QgsVectorLayer, QgsFeature,
+                      QgsGeometry, QgsField, QgsFields, QgsWkbTypes, QgsMessageLog, Qgis, QgsPoint, QgsCoordinateTransform)
 from qgis.PyQt.QtCore import QMetaType
 import processing
 import numpy as np
