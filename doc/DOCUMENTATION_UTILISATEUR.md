@@ -1,15 +1,5 @@
 # Documentation Utilisateur - Plugin Analyse Survol
 
-## Table des matières
-1. [Introduction](#introduction)
-2. [Installation](#installation)
-3. [Prise en main](#prise-en-main)
-4. [Fonctionnalités](#fonctionnalités)
-5. [Guide d'utilisation détaillé](#guide-dutilisation-détaillé)
-6. [Cas d'usage](#cas-dusage)
-7. [Résolution de problèmes](#résolution-de-problèmes)
-8. [FAQ](#faq)
-
 ## Introduction
 
 Le plugin **Analyse Survol** est un outil QGIS conçu pour analyser les trajectoires de vol et calculer les altitudes relatives par rapport au sol. Il est particulièrement utile pour :
@@ -191,18 +181,26 @@ Captures avec marqueurs sauvegardées dans /chemin/captures_altitude
 **Contexte** : Vérifier qu'un vol respecte l'altitude minimale de 1000m au-dessus du sol.
 
 **Procédure** :
+
 1. Calculer l'altitude relative avec le MNT local
+
     - Charger le MNT dans QGIS
+
     - Charger la trajectoire du vol dans QGIS
-    - Cliquer sur l'icône "Calculer altitude relative" <img src="../resources/icon.png" alt="icone_engrenage" style="height:2em; vertical-align:middle;">
+
+    - Cliquer sur l'icône "Calculer altitude relative" <img src="/icon.png" alt="icone_alt_rel" style="height:2em; vertical-align:middle;">
+
     - Sélectionner la couche MNT et la trajectoire dans la boite de dialogue
     ![alt text](dialog_rel_alti.png)
+
     - Cliquer sur OK
+
     - Une nouvelle couche doit apparaitre avec comme coordonnée z l'altitude relative par rapport au sol
+
     - Optionnel : Filtrer cette couche sur l'emprise totale du Parc National (peut accélérer les futurs calculs)
 
 2. Visualiser l'altitude du survol
-    - Cliquer sur l'icône "Calculer altitude relative" <img src="../resources/icon_visualize.png" alt="icone_engrenage" style="height:2em; vertical-align:middle;">
+    - Cliquer sur l'icône "Calculer altitude relative" <img src="/icon_visualize.png" alt="icone_vis" style="height:2em; vertical-align:middle;">
     - Sélectionner la couche avec les altitudes relatives
     ![alt text](dialog_visualisation.png)
     - Optionnel : Modifier le dégradé pour une visualisation différente et adapter la longueur des sous-segments
@@ -212,7 +210,7 @@ Captures avec marqueurs sauvegardées dans /chemin/captures_altitude
 
 3. Extraire les zones de survol illicites
     - Sélectionner les couches à afficher dans les rapports (Carte IGN Topo, couche visualisation de l'altitude relative...)
-    - Cliquer sur l'icône "Détecter segments sous altitude min." <img src="../resources/icon_report.png" alt="icone_engrenage" style="height:2em; vertical-align:middle;">
+    - Cliquer sur l'icône "Détecter segments sous altitude min." <img src="/icon_report.png" alt="icone_capture" style="height:2em; vertical-align:middle;">
     - Sélectionner la couche à analyser qui est celle utilisée pour visualiser.
     ![alt text](dialog_captures.png)
     - Définir l'altitude minimale considérée comme illicite, éventuellement une zone de capture autour du segment (uniquement pour modifier l'affichage) et modifier le dossier de sortie des rapports pour chaque segment.

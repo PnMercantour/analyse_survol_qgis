@@ -1,16 +1,5 @@
 # Documentation Développeur - Plugin Analyse Survol
 
-## Table des matières
-1. [Architecture générale](#architecture-générale)
-2. [Principes de fonctionnement](#principes-de-fonctionnement)
-3. [Structure du code](#structure-du-code)
-4. [Modules détaillés](#modules-détaillés)
-5. [Algorithmes implémentés](#algorithmes-implémentés)
-6. [Gestion des coordonnées](#gestion-des-coordonnées)
-7. [Interface utilisateur](#interface-utilisateur)
-8. [Extensibilité](#extensibilité)
-9. [Tests et debugging](#tests-et-debugging)
-
 ## Architecture générale
 
 ### Vue d'ensemble

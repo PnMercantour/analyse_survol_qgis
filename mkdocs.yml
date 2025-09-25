@@ -1,0 +1,45 @@
+site_name: Analyse Survol documentation
+docs_dir: doc
+
+theme:
+  name: material
+  palette:
+    - scheme: pnm
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Mode Sombre
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode    
+  language: fr
+  logo: 'logo_embleme_pnm_quadri_vert.jpg'
+
+plugins:
+  - search
+
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - toc:
+      toc_depth: 2
+
+nav:
+  - Accueil: index.md
+  - Documentation Utilisateur: DOCUMENTATION_UTILISATEUR.md
+  - Documentation Développeur: DOCUMENTATION_DEVELOPPEUR.md
+
+
+extra_css:
+  - stylesheets/extra.css
