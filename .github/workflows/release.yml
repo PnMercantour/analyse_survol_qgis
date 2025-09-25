@@ -1,0 +1,26 @@
+name: Build QGIS Plugin Zip
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-zip:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Rename repo folder to match plugin name
+        run: |
+          cd $GITHUB_WORKSPACE
+          mkdir analyse_survol
+          shopt -s extglob
+          mv !(analyse_survol) analyse_survol/
+          zip -r analyse_survol.zip analyse_survol
+
+      - name: Upload plugin zip to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: analyse_survol.zip
