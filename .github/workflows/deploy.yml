@@ -25,7 +25,6 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.4
         with:
             ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
-            passphrase: ${{ secrets.SERVER_SSH_PASSPHRASE }}
 
       - name: Deploy to server
         uses: appleboy/scp-action@v0.1.7
