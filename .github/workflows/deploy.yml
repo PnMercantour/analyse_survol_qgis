@@ -80,4 +80,4 @@ jobs:
             key: ${{ secrets.SERVER_SSH_KEY }}
             overwrite: true
             source: "plugins.xml"
-            target: "/var/www/qgis-plugins/plugins.xml"
+            target: "/var/www/qgis-plugins/"
