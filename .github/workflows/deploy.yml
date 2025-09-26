@@ -1,0 +1,84 @@
+name: Deploy QGIS Plugin
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Rename repo folder to match plugin name
+        run: |
+          cd $GITHUB_WORKSPACE
+          mkdir analyse_survol
+          shopt -s extglob
+          mv !(analyse_survol) analyse_survol/
+          zip -r analyse_survol.zip analyse_survol
+
+      - name: Start ssh-agent
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+            ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
+            passphrase: ${{ secrets.SERVER_SSH_PASSPHRASE }}
+
+      - name: Deploy to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          overwrite: true
+          source: "analyse_survol.zip"
+          target: "/var/www/qgis-plugins/"
+
+
+      - name: Fetch plugins.xml from server
+        run: |
+            scp -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/qgis-plugins/plugins.xml plugins.xml
+
+
+      - name: Update plugin version in plugins.xml
+        run: |
+            python - <<EOF
+            import xml.etree.ElementTree as ET
+            import os
+
+            PLUGIN_NAME = "Analyse Survol"
+
+            with open("analyse_survol/metadata.txt") as f:
+                for line in f:
+                    if line.startswith("version="):
+                        VERSION = line.strip().split("=")[1]
+
+            tree = ET.parse("plugins.xml")
+            root = tree.getroot()
+
+            # Cherche le plugin existant
+            plugin_elem = None
+            for plugin in root.findall("pyqgis_plugin"):
+                if plugin.attrib.get("name") == PLUGIN_NAME:
+                    plugin_elem = plugin
+                    break
+
+            # Si le plugin n’existe pas, on le crée
+            # Met à jour la version
+            plugin_elem.set("version", VERSION)
+
+            tree.write("plugins.xml", encoding="utf-8", xml_declaration=True)
+            EOF
+
+      - name: Deploy to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+            host: ${{ secrets.SERVER_HOST }}
+            username: ${{ secrets.SERVER_USER }}
+            key: ${{ secrets.SERVER_SSH_KEY }}
+            overwrite: true
+            source: "plugins.xml"
+            target: "/var/www/qgis-plugins/plugins.xml"
