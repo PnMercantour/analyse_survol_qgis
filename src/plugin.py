@@ -30,12 +30,12 @@ class AltitudeRelativePlugin:
         
         # Initialiser les variables
         self.actions = []
-        self.menu = "Altitude Relative"
-        self.toolbar = self.iface.addToolBar("AltitudeRelative")
-        self.toolbar.setObjectName("AltitudeRelative")
-        
-    def add_action(self, icon_path, text, callback, enabled_flag=True, 
-                   add_to_menu=True, add_to_toolbar=True, status_tip=None, 
+        self.menu = "Analyse Survol"
+        self.toolbar = self.iface.addToolBar("Analyse Survol")
+        self.toolbar.setObjectName("Analyse Survol")
+
+    def add_action(self, icon_path, text, callback, enabled_flag=True,
+                   add_to_menu=True, add_to_toolbar=True, status_tip=None,
                    whats_this=None, parent=None):
         """Ajouter une action à la barre d'outils et au menu"""
         

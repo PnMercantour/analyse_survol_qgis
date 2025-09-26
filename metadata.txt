@@ -1,22 +1,22 @@
 [general]
-name=Altitude Relative
+name=analyse_survol
 qgisMinimumVersion=3.0
-description=Calcule l'altitude relative d'une couche polyligne par rapport à un MNT
+description=Calcule l'altitude relative d'une couche polyligne par rapport à un MNT et crée des rapports d'analyse de survol illicite.
 version=1.0
-author=Votre Nom
-email=votre.email@example.com
+author=Quentin - Parc National du Mercantour
+email=quentin.vintras@mercantour-parcnational.fr
 
 about=Ce plugin calcule l'altitude relative (hauteur par rapport au sol) 
       d'une couche polyligne en utilisant un Modèle Numérique de Terrain (MNT).
       Il échantillonne le MNT le long de chaque polyligne et calcule la différence
       entre l'altitude absolue de la polyligne et l'altitude du terrain.
 
-tracker=https://github.com/votreusername/altitude-relative-plugin/issues
-repository=https://github.com/votreusername/altitude-relative-plugin
-homepage=https://github.com/votreusername/altitude-relative-plugin
+tracker=https://github.com/PnMercantour/analyse_survol_qgis/issues
+repository=https://github.com/PnMercantour/analyse_survol_qgis
+homepage=https://pnmercantour.github.io/analyse_survol_qgis/
 
 # Tags séparées par des virgules, espaces autorisés à l'intérieur des tags
-tags=altitude,MNT,terrain,polyligne,relatif
+tags=altitude,MNT,terrain,polyligne,relatif,autorisation survol
 
 # Chemin vers l'icône dans le dossier du plugin
 icon=icon.png
