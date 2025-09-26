@@ -35,6 +35,7 @@ jobs:
           shopt -s extglob
           mv !(analyse_survol) analyse_survol/
           zip -r analyse_survol.${VERSION}.zip analyse_survol
+          ls
 
       - name: Start ssh-agent
         uses: webfactory/ssh-agent@v0.5.4
@@ -48,7 +49,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           overwrite: true
-          source: "analyse_survol.${VERSION}.zip"
+          source: analyse_survol.${{ env.VERSION }}.zip
           target: "/var/www/qgis-plugins/"
 
 
@@ -64,6 +65,7 @@ jobs:
             import os
 
             PLUGIN_NAME = "Analyse Survol"
+            VERSION = "${{ env.VERSION }}"
             DOWNLOAD_URL = f"https://${{ secrets.SERVER_HOST }}/analyse_survol.{VERSION}.zip"
 
             with open("analyse_survol/metadata.txt") as f:
