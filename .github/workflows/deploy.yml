@@ -19,7 +19,7 @@ jobs:
           mkdir analyse_survol
           shopt -s extglob
           mv !(analyse_survol) analyse_survol/
-          zip -r analyse_survol.zip analyse_survol
+          zip -r analyse_survol.${VERSION}.zip analyse_survol
 
       - name: Start ssh-agent
         uses: webfactory/ssh-agent@v0.5.4
