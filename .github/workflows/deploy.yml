@@ -13,6 +13,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Check metadata version against tag
+        run: |
+          META_VERSION=$(grep "^version=" analyse_survol/metadata.txt | cut -d'=' -f2)
+          TAG_VERSION=${GITHUB_REF_NAME#v}
+
+          echo "metadata.txt: $META_VERSION"
+          echo "git tag: $TAG_VERSION"
+
+          if [ "$META_VERSION" != "$TAG_VERSION" ]; then
+            echo "Version mismatch between metadata.txt and git tag"
+            exit 1
+          fi
+
+          echo "VERSION=$META_VERSION" >> $GITHUB_ENV
+
       - name: Rename repo folder to match plugin name
         run: |
           cd $GITHUB_WORKSPACE
@@ -33,7 +48,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           overwrite: true
-          source: "analyse_survol.zip"
+          source: "analyse_survol.${VERSION}.zip"
           target: "/var/www/qgis-plugins/"
 
 
@@ -49,6 +64,7 @@ jobs:
             import os
 
             PLUGIN_NAME = "Analyse Survol"
+            DOWNLOAD_URL = f"https://${{ secrets.SERVER_HOST }}/analyse_survol.{VERSION}.zip"
 
             with open("analyse_survol/metadata.txt") as f:
                 for line in f:
@@ -68,6 +84,8 @@ jobs:
             # Si le plugin n’existe pas, on le crée
             # Met à jour la version
             plugin_elem.set("version", VERSION)
+            download_url_elem = plugin_elem.find("download_url")
+            download_url_elem.text = DOWNLOAD_URL
 
             tree.write("plugins.xml", encoding="utf-8", xml_declaration=True)
             EOF
