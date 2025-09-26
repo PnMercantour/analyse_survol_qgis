@@ -2,7 +2,7 @@
 name=Analyse Survol
 qgisMinimumVersion=3.0
 description=Calcule l'altitude relative d'une couche polyligne par rapport à un MNT et crée des rapports d'analyse de survol illicite.
-version=1.0
+version=0.1.0
 author=Quentin - Parc National du Mercantour
 email=quentin.vintras@mercantour-parcnational.fr
 
