@@ -15,7 +15,7 @@ jobs:
 
       - name: Check metadata version against tag
         run: |
-          META_VERSION=$(grep "^version=" analyse_survol/metadata.txt | cut -d'=' -f2)
+          META_VERSION=$(grep "^version=" metadata.txt | cut -d'=' -f2)
           TAG_VERSION=${GITHUB_REF_NAME#v}
 
           echo "metadata.txt: $META_VERSION"
