@@ -19,17 +19,20 @@ Plugin QGIS spécialisé dans l'analyse des trajectoires de vol et le calcul d'a
   - Trajectoires de vol au format LineStringZ avec coordonnées d'altitude
 
 
-## Installation avec un fichier zip
+## Installation
 
-1. Allez dans `Extensions > Installer / Gérer les Extensions > Installer depuis un ZIP`
-2. Cliquez sur `...` puis allez chercher le zip
-3. Cliquez sur `Installer l'extension`
+### Installation depuis le depot de plugins QGIS du Parc national du Mercantour (Recommandé)
 
-## Installation rapide
+- Si le dépôt QGIS du Parc national du Mercantour n'est pas configuré dans QGIS suivre [la procédure d'installation](https://pnmercantour.github.io/donnees/tutos/installation_plugin_via_depot/)
+- Dans QGIS allez dans **Extensions** → **Installer/Gérer les extensions**, dans l'onglet **Toutes**, recherchez l'extension `Analyse Survol` puis cliquez sur **Installer**
 
-1. Copiez le dossier `analyse_survol` dans votre répertoire de plugins QGIS
-2. Activez le plugin dans `Extensions > Gestionnaire d'extensions`
-3. Les outils apparaissent dans la barre d'outils "AltitudeRelative"
+### Installation depuis un fichier ZIP
+
+1. Téléchargez le plugin au format ZIP
+2. Dans QGIS, allez dans **Extensions** → **Installer/Gérer les extensions**
+3. Cliquez sur **Installer depuis un ZIP**
+4. Sélectionnez le fichier ZIP du plugin
+5. Cliquez sur **Installer l'extension**
 
 ## Documentation
 
