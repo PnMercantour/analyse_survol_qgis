@@ -103,7 +103,7 @@ Pour utiliser le plugin, vous devez disposer de :
 3. Vérifiez que les deux couches ont des systèmes de coordonnées cohérents
 
 #### Étape 2 : Lancement du calcul
-1. Cliquez sur l'icône "Calculer altitude relative" <img src="../resources/icon.png" alt="icone_engrenage" style="height:2em; vertical-align:middle;">
+1. Cliquez sur l'icône "Calculer altitude relative" <img src="../icon.png" alt="icone_engrenage" style="height:2em; vertical-align:middle;">
 2. Dans la boîte de dialogue :
    - **MNT** : Sélectionnez votre couche raster
    - **Trajectoire** : Sélectionnez votre couche de ligne 3D
@@ -118,7 +118,7 @@ La couche résultante contient :
 ### Visualisation des segments colorés
 
 #### Étape 1 : Configuration
-1. Cliquez sur "Visualiser segments colorés" <img src="../resources/icon_visualize.png" alt="icone_engrenage" style="height:2em; vertical-align:middle;">
+1. Cliquez sur "Visualiser segments colorés" <img src="../icon_visualize.png" alt="icone_engrenage" style="height:2em; vertical-align:middle;">
 2. Configurez les paramètres :
    - **Couche source** : Sélectionnez votre trajectoire (celle calculée précédemment avec l'altitude relative)
    - **Longueur segments** : 5 mètres recommandé
@@ -143,7 +143,7 @@ Une nouvelle couche avec :
 ### Détection des dépassements
 
 #### Étape 1 : Configuration de la détection
-1. Cliquez sur "Détecter segments sous altitude min." <img src="../resources/icon_report.png" alt="icone_engrenage" style="height:2em; vertical-align:middle;">
+1. Cliquez sur "Détecter segments sous altitude min." <img src="../icon_report.png" alt="icone_engrenage" style="height:2em; vertical-align:middle;">
 2. Paramètres :
    - **Couche** : Trajectoire à analyser (Attention à bien analyser la trajectoire utilisée pour la visualisation)
    - **Altitude minimale** : Seuil en mètres (ex: 1000m)
@@ -191,7 +191,7 @@ Des données d'exemple sont disponibles via ce [lien](https://qgis-depot.mercant
 
     - Charger la trajectoire du vol dans QGIS
 
-    - Cliquer sur l'icône "Calculer altitude relative" <img src="/icon.png" alt="icone_alt_rel" style="height:2em; vertical-align:middle;">
+    - Cliquer sur l'icône "Calculer altitude relative" <img src="../icon.png" alt="icone_alt_rel" style="height:2em; vertical-align:middle;">
 
     - Sélectionner la couche MNT et la trajectoire dans la boite de dialogue
     ![alt text](dialog_rel_alti.png)
@@ -203,7 +203,7 @@ Des données d'exemple sont disponibles via ce [lien](https://qgis-depot.mercant
     - Optionnel : Filtrer cette couche sur l'emprise totale du Parc National (peut accélérer les futurs calculs)
 
 2. Visualiser l'altitude du survol
-    - Cliquer sur l'icône "Calculer altitude relative" <img src="/icon_visualize.png" alt="icone_vis" style="height:2em; vertical-align:middle;">
+    - Cliquer sur l'icône "Visualiser segments colorés" <img src="../icon_visualize.png" alt="icone_vis" style="height:2em; vertical-align:middle;">
     - Sélectionner la couche avec les altitudes relatives
     ![alt text](dialog_visualisation.png)
     - Optionnel : Modifier le dégradé pour une visualisation différente et adapter la longueur des sous-segments
@@ -211,15 +211,15 @@ Des données d'exemple sont disponibles via ce [lien](https://qgis-depot.mercant
     - Une nouvelle couche apparait avec la colormap définie
     ![alt text](resultat_visualisation.png)
 
-3. Extraire les zones de survol illicites
+3. Extraire les zones de survol à basse altitude
     - Sélectionner les couches à afficher dans les rapports (Carte IGN Topo, couche visualisation de l'altitude relative...)
-    - Cliquer sur l'icône "Détecter segments sous altitude min." <img src="/icon_report.png" alt="icone_capture" style="height:2em; vertical-align:middle;">
+    - Cliquer sur l'icône "Détecter segments sous altitude min." <img src="../icon_report.png" alt="icone_capture" style="height:2em; vertical-align:middle;">
     - Sélectionner la couche à analyser qui est celle utilisée pour visualiser.
     ![alt text](dialog_captures.png)
-    - Définir l'altitude minimale considérée comme illicite, éventuellement une zone de capture autour du segment (uniquement pour modifier l'affichage) et modifier le dossier de sortie des rapports pour chaque segment.
+    - Définir l'altitude minimale souhaitée, éventuellement une zone de capture autour du segment (uniquement pour modifier l'affichage) et modifier le dossier de sortie des rapports pour chaque segment.
     - Cliquer sur OK
     - Attendre la fin du traitement et récupérer les captures dans le dossier de sortie
     ![alt text](resultat_final.png)
 
-*Plugin Analyse Survol - Version 1.0*  
-*Documentation utilisateur mise à jour le 24 septembre 2025*
+*Plugin Analyse Survol - Version 1.1*  
+*Documentation utilisateur mise à jour le 30 septembre 2025*
