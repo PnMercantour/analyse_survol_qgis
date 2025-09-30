@@ -7,7 +7,7 @@ from qgis.PyQt.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QPushButton,
                                 QLabel, QDoubleSpinBox, QCheckBox)
 from qgis.PyQt.QtGui import QColor
 from qgis.gui import QgsMapLayerComboBox, QgsColorRampButton
-from qgis.core import QgsMapLayerProxyModel, QgsGradientColorRamp, QgsGradientStop
+from qgis.core import QgsMapLayerProxyModel, QgsGradientColorRamp, QgsGradientStop, QgsProject, QgsMapLayer, QgsWkbTypes, QgsMessageLog, Qgis
 
 
 class LineSegmentDialog(QDialog):
@@ -27,7 +27,14 @@ class LineSegmentDialog(QDialog):
         layout.addWidget(QLabel("Sélectionnez la couche à segmenter:"))
         self.layer_combo = QgsMapLayerComboBox()
         self.layer_combo.setFilters(QgsMapLayerProxyModel.LineLayer)
+        # --- sélectionner par défaut la couche qui a le champ "altitude_relative" ---
+        for layer in QgsProject.instance().mapLayers().values():
+            if layer.type() == QgsMapLayer.VectorLayer and layer.geometryType() == QgsWkbTypes.LineGeometry:
+                if "altitude_relative" in layer.name():
+                    self.layer_combo.setLayer(layer)
+                    break
         layout.addWidget(self.layer_combo)
+
         
         # Configuration de la longueur des segments
         length_layout = QHBoxLayout()

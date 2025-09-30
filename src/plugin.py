@@ -219,7 +219,7 @@ class AltitudeRelativePlugin:
             dialog.progress_bar.setVisible(True)
             
             # Calculer les altitudes relatives
-            success = self.calculator.calculate_relative_altitudes(
+            success, msg = self.calculator.calculate_relative_altitudes(
                 mnt_layer, output_layer, altitude_field, use_z_coordinate, update_progress
             )
             
@@ -237,7 +237,7 @@ class AltitudeRelativePlugin:
                 )
             else:
                 self.iface.messageBar().pushMessage(
-                    "Erreur", "Le calcul a échoué", 
+                    "Erreur", f"Le calcul a échoué : {msg}", 
                     level=Qgis.Critical
                 )
             
@@ -285,4 +285,3 @@ class AltitudeRelativePlugin:
                 level=Qgis.Critical
             )
     
-

@@ -40,6 +40,8 @@ def replace_z(geom: QgsGeometry, new_z: np.ndarray) -> QgsGeometry:
         return QgsGeometry.fromPolyline(new_points)
     elif g.wkbType() in (QgsWkbTypes.PolygonZ, QgsWkbTypes.Polygon25D):
         return QgsGeometry.fromPolygonXY([new_points])
+    elif g.wkbType() in (QgsWkbTypes.MultiLineStringZ, QgsWkbTypes.MultiLineString25D):
+        raise NotImplementedError("""Le plugin ne fonctionne pas pour les MultiLineStringZ, veuillez convertir votre couche en LineStringZ avec l'outil "De morceaux multiples à morceaux uniques" de QGIS.""")
     else:
         raise NotImplementedError(f"replace_z non implémenté pour {g.wkbType()}")
 
@@ -208,12 +210,12 @@ class AltitudeCalculator:
             if progress_callback:
                 progress_callback(polyline_layer.featureCount(), None)
             
-            return True
+            return True, None
             
         except Exception as e:
             QgsMessageLog.logMessage(f"Erreur lors du calcul: {str(e)}", 
                                    level=Qgis.Critical)
-            return False
+            return False, str(e)
 
     def get_z_coordinate_from_geometry(self, geometry):
         """Extraire la coordonnée Z moyenne d'une géométrie polyligne"""

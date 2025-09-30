@@ -7,7 +7,7 @@ from qgis.PyQt.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QPushButton,
                                 QLabel, QDoubleSpinBox, QCheckBox, QLineEdit,
                                 QFileDialog)
 from qgis.gui import QgsMapLayerComboBox
-from qgis.core import QgsMapLayerProxyModel, QgsProject
+from qgis.core import QgsMapLayerProxyModel, QgsProject, QgsMapLayer, QgsWkbTypes
 import os
 
 
@@ -29,6 +29,11 @@ class AltitudeCheckDialog(QDialog):
         self.layer_combo = QgsMapLayerComboBox()
         self.layer_combo.setFilters(QgsMapLayerProxyModel.LineLayer)
         layout.addWidget(self.layer_combo)
+        for layer in QgsProject.instance().mapLayers().values():
+            if layer.type() == QgsMapLayer.VectorLayer and layer.geometryType() == QgsWkbTypes.LineGeometry:
+                if "altitude_relative_segments" in layer.name():
+                    self.layer_combo.setLayer(layer)
+                    break
         
         # Configuration de l'altitude minimale
         min_alt_layout = QHBoxLayout()

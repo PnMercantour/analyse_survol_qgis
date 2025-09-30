@@ -3,8 +3,8 @@
 Analyseur d'altitude pour la détection de segments sous altitude minimale
 """
 
-from qgis.core import QgsGeometry, QgsPointXY, QgsMessageLog, Qgis
-from qgis.PyQt.QtWidgets import QProgressDialog, QApplication
+from qgis.core import QgsGeometry, QgsPointXY, QgsMessageLog, Qgis, QgsProject
+from qgis.PyQt.QtWidgets import QProgressDialog, QApplication, QMessageBox
 from qgis.PyQt.QtCore import Qt
 
 from .visualization.map_capture import MapCapturer
@@ -30,6 +30,11 @@ class AltitudeAnalyzer:
         Returns:
             list: Liste des segments détectés (count, min_z, captured_path, distance)
         """
+        # Vérifier la correspondance des CRS avant de commencer
+
+        if not self._check_crs_compatibility(source_layer):
+            raise ValueError("CRS de la couche source ne correspond pas au CRS du projet.")
+
         capturer = MapCapturer(self.iface, capture_folder)
         low_segments = []
         self.group_count = 0
@@ -63,6 +68,48 @@ class AltitudeAnalyzer:
         # Finaliser le dernier groupe si nécessaire
         self._finalize_current_group(group_state, capturer, buffer_size, low_segments)
         return low_segments
+    
+    def _check_crs_compatibility(self, source_layer):
+        """
+        Vérifie que le CRS de la couche correspond au CRS du projet
+        
+        Args:
+            source_layer: Couche source à vérifier
+            
+        Returns:
+            bool: True si les CRS sont compatibles, False sinon
+        """
+        project_crs = QgsProject.instance().crs()
+        layer_crs = source_layer.crs()
+        
+        if project_crs.authid() != layer_crs.authid():
+            # Afficher un message d'erreur avec les détails des CRS
+            msg_box = QMessageBox(self.iface.mainWindow())
+            msg_box.setIcon(QMessageBox.Warning)
+            msg_box.setWindowTitle("Incompatibilité des systèmes de coordonnées")
+            msg_box.setText(
+                "Le système de coordonnées de référence (CRS) de la couche ne correspond pas à celui du projet."
+            )
+            msg_box.setDetailedText(
+                f"CRS du projet : {project_crs.authid()} - {project_crs.description()}\n"
+                f"CRS de la couche : {layer_crs.authid()} - {layer_crs.description()}\n\n"
+                "Solutions possibles :\n"
+                "1. Changer le CRS du projet pour qu'il corresponde à celui de la couche\n"
+                "2. Reprojeter la couche dans le CRS du projet\n"
+                "3. Utiliser l'outil 'Reprojeter une couche' dans la boîte à outils"
+            )
+            msg_box.setInformativeText(
+                "Veuillez harmoniser les systèmes de coordonnées avant de continuer l'analyse."
+            )
+            msg_box.exec_()
+            
+            QgsMessageLog.logMessage(
+                f"CRS incompatibles - Projet: {project_crs.authid()}, Couche: {layer_crs.authid()}", 
+                level=Qgis.Warning
+            )
+            return False
+        
+        return True
     
     def _init_group_state(self):
         """Initialise l'état d'un nouveau groupe"""
