@@ -499,26 +499,27 @@
 <h2 id="installation">Installation</h2>
 <h3 id="prerequis">Prérequis</h3>
 <ul>
-<li>QGIS 3.16 ou version ultérieure</li>
-<li>Python 3.7+</li>
+<li>QGIS 3.40 ou version ultérieure</li>
+<li>Python 3.12+</li>
 <li>Modules Python : numpy (généralement inclus avec QGIS)</li>
 </ul>
-<h3 id="installation-manuelle">Installation manuelle</h3>
-<p><strong>Téléchargement</strong> : Récupérez le fichier zip du plugin</p>
-<ol>
-<li>Allez dans <code>Extensions &gt; Installer / Gérer les Extensions &gt; Installer depuis un ZIP</code></li>
-<li>Cliquez sur <code>...</code> puis allez chercher le zip</li>
-<li>Cliquez sur <code>Installer l'extension</code></li>
-</ol>
+<h3 id="installation-depuis-le-depot-de-plugins-qgis-du-parc-national-du-mercantour">Installation depuis le depot de plugins QGIS du Parc national du Mercantour</h3>
+<ul>
+<li>Si le dépôt QGIS du Parc national du Mercantour n'est pas configuré dans QGIS suivre <a href="https://pnmercantour.github.io/donnees/tutos/installation_plugin_via_depot/">la procédure d'installation</a></li>
+<li>Dans QGIS allez dans <strong>Extensions</strong> → <strong>Installer/Gérer les extensions</strong>, dans l'onglet <strong>Toutes</strong>, recherchez l'extension <code>Analyse Survol</code> puis cliquez sur <strong>Installer</strong></li>
+</ul>
 <h3 id="verification-de-linstallation">Vérification de l'installation</h3>
 <p>Après activation, vous devriez voir :
-- Une nouvelle barre d'outils "AltitudeRelative" avec 3 boutons d'actions
-- Un menu "Altitude Relative" dans le menu Vecteur</p>
+- Une nouvelle barre d'outils "Analyse Survol" avec 3 boutons d'actions
+- Un menu "Analyse Survol" dans le menu Vecteur</p>
+<blockquote>
+<p><strong>Remarque :</strong> Effectuez les mises à jour du plugin régulièrement.</p>
+</blockquote>
 <h2 id="prise-en-main">Prise en main</h2>
 <h3 id="interface-utilisateur">Interface utilisateur</h3>
 <p>Le plugin ajoute trois outils principaux accessibles via :
 - <strong>Barre d'outils</strong> : Trois boutons avec icônes
-- <strong>Menu Vecteur</strong> : Sous-menu "Altitude Relative"</p>
+- <strong>Menu Vecteur</strong> : Sous-menu "Analyse Survol"</p>
 <h3 id="donnees-requises">Données requises</h3>
 <p>Pour utiliser le plugin, vous devez disposer de :
 1. <strong>Couche MNT (Modèle Numérique de Terrain)</strong> : Raster représentant l'altitude du sol
@@ -637,6 +638,7 @@
 </code></pre></div></p>
 <h2 id="cas-dusage">Cas d'usage</h2>
 <h3 id="analyse-de-conformite-de-vol">Analyse de conformité de vol</h3>
+<p>Des données d'exemple sont disponibles via ce <a href="" title="https://qgis-depot.mercantour.eu/data_example/analyse_survol_example_data.zip">lien</a>. Il faut télécharger les données, dézipper et ouvrir le projet QGIS contenu dans le dossier.</p>
 <p><strong>Contexte</strong> : Vérifier qu'un vol respecte l'altitude minimale de 1000m au-dessus du sol.</p>
 <p><strong>Procédure</strong> :</p>
 <ol>
