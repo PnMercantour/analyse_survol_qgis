@@ -18,28 +18,28 @@ Le plugin **Analyse Survol** est un outil QGIS conçu pour analyser les trajecto
 ## Installation
 
 ### Prérequis
-- QGIS 3.16 ou version ultérieure
-- Python 3.7+
+- QGIS 3.40 ou version ultérieure
+- Python 3.12+
 - Modules Python : numpy (généralement inclus avec QGIS)
 
-### Installation manuelle
-**Téléchargement** : Récupérez le fichier zip du plugin
+### Installation depuis le depot de plugins QGIS du Parc national du Mercantour
 
-1. Allez dans `Extensions > Installer / Gérer les Extensions > Installer depuis un ZIP`
-2. Cliquez sur `...` puis allez chercher le zip
-3. Cliquez sur `Installer l'extension`
+- Si le dépôt QGIS du Parc national du Mercantour n'est pas configuré dans QGIS suivre [la procédure d'installation](https://pnmercantour.github.io/donnees/tutos/installation_plugin_via_depot/)
+- Dans QGIS allez dans **Extensions** → **Installer/Gérer les extensions**, dans l'onglet **Toutes**, recherchez l'extension `Analyse Survol` puis cliquez sur **Installer**
 
 ### Vérification de l'installation
 Après activation, vous devriez voir :
-- Une nouvelle barre d'outils "AltitudeRelative" avec 3 boutons d'actions
-- Un menu "Altitude Relative" dans le menu Vecteur
+- Une nouvelle barre d'outils "Analyse Survol" avec 3 boutons d'actions
+- Un menu "Analyse Survol" dans le menu Vecteur
+
+> **Remarque :** Effectuez les mises à jour du plugin régulièrement.
 
 ## Prise en main
 
 ### Interface utilisateur
 Le plugin ajoute trois outils principaux accessibles via :
 - **Barre d'outils** : Trois boutons avec icônes
-- **Menu Vecteur** : Sous-menu "Altitude Relative"
+- **Menu Vecteur** : Sous-menu "Analyse Survol"
 
 ### Données requises
 Pour utiliser le plugin, vous devez disposer de :
@@ -178,6 +178,9 @@ Captures avec marqueurs sauvegardées dans /chemin/captures_altitude
 ## Cas d'usage
 
 ### Analyse de conformité de vol
+
+Des données d'exemple sont disponibles via ce [lien]("https://qgis-depot.mercantour.eu/data_example/analyse_survol_example_data.zip"). Il faut télécharger les données, dézipper et ouvrir le projet QGIS contenu dans le dossier.
+
 **Contexte** : Vérifier qu'un vol respecte l'altitude minimale de 1000m au-dessus du sol.
 
 **Procédure** :

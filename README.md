@@ -37,13 +37,13 @@ Plugin QGIS spécialisé dans l'analyse des trajectoires de vol et le calcul d'a
 ## Documentation
 
 ### Pour les utilisateurs
-**[Documentation Utilisateur](doc/DOCUMENTATION_UTILISATEUR.md)**
+**[Documentation Utilisateur](https://pnmercantour.github.io/analyse_survol_qgis/DOCUMENTATION_UTILISATEUR/)**
 - Guide d'installation détaillé
 - Tutoriels pas-à-pas
-- Cas d'usage concrets
+- [Cas d'usage concrets avec données d'exemple]("https://pnmercantour.github.io/analyse_survol_qgis/DOCUMENTATION_UTILISATEUR/#cas-dusage")
 
 ### Pour les développeurs  
-**[Documentation Développeur](doc/DOCUMENTATION_DEVELOPPEUR.md)**
+**[Documentation Développeur](https://pnmercantour.github.io/analyse_survol_qgis/DOCUMENTATION_DEVELOPPEUR/)**
 - Architecture du code
 - API de référence
 - Algorithmes implémentés
@@ -74,8 +74,8 @@ Les messages détaillés sont disponibles dans :
 ---
 
 **🔗 Liens utiles**
-- [Documentation Utilisateur complète](DOCUMENTATION_UTILISATEUR.md)
-- [Documentation Développeur](DOCUMENTATION_DEVELOPPEUR.md)  
+- [Documentation Utilisateur complète](https://pnmercantour.github.io/analyse_survol_qgis/DOCUMENTATION_UTILISATEUR/)
+- [Documentation Développeur](https://pnmercantour.github.io/analyse_survol_qgis/DOCUMENTATION_DEVELOPPEUR/)  
 - [QGIS.org](https://qgis.org)
 
 *Plugin Analyse Survol v1.0 - Développé pour QGIS 3.40+*

@@ -2,8 +2,8 @@
 name=Analyse Survol
 qgisMinimumVersion=3.0
 description=Calcule l'altitude relative d'une couche polyligne par rapport à un MNT et crée des rapports d'analyse de survol illicite.
-version=1.0.0
-author=Quentin - Parc National du Mercantour
+version=1.1.0
+author=Quentin - Parc national du Mercantour
 email=quentin.vintras@mercantour-parcnational.fr
 
 about=Ce plugin calcule l'altitude relative (hauteur par rapport au sol) 
