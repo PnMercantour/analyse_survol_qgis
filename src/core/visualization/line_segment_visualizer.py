@@ -118,7 +118,7 @@ class LineSegmentVisualizer:
         for seg_pts, avg_z, length, color in self._split_line_3d(geometry):
             feat = QgsFeature()
             feat.setGeometry(QgsGeometry.fromPolyline(seg_pts))
-            feat.setAttributes([avg_z, length, color])
+            feat.setAttributes([avg_z, length, color, alt_json])
             segments.append(feat)
         return segments
 
@@ -202,6 +202,10 @@ class LineSegmentVisualizer:
         """
         if z >= self.color_stops[-1].altitude:
             r, g, b = self.color_stops[-1].color
+            return f"#{r:02x}{g:02x}{b:02x}"
+        
+        elif z <= self.color_stops[0].altitude:
+            r, g, b = 0, 0 ,0
             return f"#{r:02x}{g:02x}{b:02x}"
 
         for i in range(len(self.color_stops) - 1):

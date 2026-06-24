@@ -51,7 +51,7 @@ class AltitudeAnalyzer:
 
         for i, feature in enumerate(source_layer.getFeatures()):
             z_avg = self._get_feature_altitude(feature)
-            if z_avg is None:
+            if z_avg is None or z_avg <= 30:
                 continue
                 
             if z_avg < min_altitude:
