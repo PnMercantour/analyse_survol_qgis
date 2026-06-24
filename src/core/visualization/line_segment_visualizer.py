@@ -118,7 +118,7 @@ class LineSegmentVisualizer:
         for seg_pts, avg_z, length, color in self._split_line_3d(geometry):
             feat = QgsFeature()
             feat.setGeometry(QgsGeometry.fromPolyline(seg_pts))
-            feat.setAttributes([avg_z, length, color, alt_json])
+            feat.setAttributes([avg_z, length, color])
             segments.append(feat)
         return segments
 
